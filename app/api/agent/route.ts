@@ -19,7 +19,7 @@ ${userContext}
 What is the best recommendation or action to take for the user right now?
 `;
 
-console.log(userContext);
+
 
   const systemPrompt = `
 You are Dan's personal AI assistant. By tapping into device data, act on Dan's behalf, surface timely and accurate recommendations,
