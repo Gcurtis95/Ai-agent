@@ -1,3 +1,4 @@
+// formats and returns a comprehensive string representation of the user's digital context.
 
 import {
   userProfile,
@@ -60,10 +61,10 @@ export function userData(): string {
 
   // Spotify
   const allTracks = spotifyPlaylists.playlists
-    .map(p => `🎵 ${p.name}:\n  ${p.tracks.join(', ')}`)
+    .map(p => `${p.name}:\n  ${p.tracks.join(', ')}`)
     .join('\n\n');
 
-  // Calender
+  // Calendar
   const calFormatted = calendar
     .map(event => {
       const [hourStr, minuteStr] = event.time.split(':');
@@ -86,6 +87,8 @@ export function userData(): string {
     .map(loc => `• ${loc.timestamp}: ${loc.location}`)
     .join('\n');
 
+
+// Final formatted user context string
   return `
 USER PROFILE
 ${profileInfo}

@@ -1,5 +1,5 @@
 
-
+// Hardcoded data representing user device information
 
 type UserProfile = {
   name: string;

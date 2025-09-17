@@ -1,3 +1,5 @@
+// server side code to handle the POST request from the client
+
 import { NextRequest, NextResponse } from 'next/server';
 import { OpenAI } from 'openai';
 import { userData } from '../../lib/userData';
@@ -6,11 +8,20 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+
+// POST request handler that processes incoming requests, interacts with the openAI API, and returns a structured response.
+
 export async function POST(req: NextRequest) {
+
+  // retrieves the date and time from the client side and loads user context from the device data.
   const { date, time } = await req.json();
   const userContext = userData();
 
-  const prompt = `
+
+
+// constructs a prompt that includes the current date/time and user context to guide the AI's response.
+
+const prompt = `
 Current Date and Time: ${date} ${time}
 
 User Context:
@@ -50,6 +61,9 @@ You must always respond with a structured JSON object like this:
 Your goal is to provide 1–2 *relevant* and *context-aware* actions that would help Dan in the current moment, based on his digital life data. Actions should be practical, non-intrusive, and empathetic.
 `;
 
+
+// calls the api with the constructed prompt and system instructions, requesting a response in the specified structured format.
+
   try {
     const response = await openai.chat.completions.create({
       model: 'gpt-4.1',
@@ -58,6 +72,8 @@ Your goal is to provide 1–2 *relevant* and *context-aware* actions that would 
         { role: 'user', content: prompt },
       ],
     });
+
+  // parses the response from the api as JSON and returns it to the client. If parsing fails, it returns an error message.
 
     const rawContent = response.choices[0].message?.content || '';
 
