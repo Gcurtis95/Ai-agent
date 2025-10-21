@@ -11,14 +11,7 @@ Adjust the sliders to set the desired date and time for the autonomous agent's a
 
 Press the play button to begin the simulation.
 
-### To run Locally
 
-``` bash
-
-npm install
-npm run dev
-
-```
 ## Assumptions
 
 All device data is hardcoded in lib/DeviceData.ts for simplicity and to avoid backend dependencies during Vercel deployment.
