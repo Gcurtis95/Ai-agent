@@ -1,6 +1,5 @@
 # Everything App
 
-https://nothing-technical-garin.vercel.app/
 
 ## Instructions 
 
